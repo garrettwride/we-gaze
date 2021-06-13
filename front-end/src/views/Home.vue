@@ -1,18 +1,18 @@
 <template>
 <div class="home">
-  <MyParties v-if="user" />
+  <GazeParties v-if="user" />
   <Intro v-else />
 </div>
 </template>
 
 <script>
-import MyPhotos from '@/components/MyParties.vue';
-import Login from '@/components/Intro.vue';
+import GazeParties from '@/components/GazeParties.vue';
+import Intro from '@/components/Intro.vue';
 import axios from 'axios';
 export default {
   name: 'Home',
   components: {
-    MyParties,
+    GazeParties,
     Intro,
   },
   async created() {
