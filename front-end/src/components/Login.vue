@@ -1,6 +1,6 @@
 <template>
     <div class="login">
-        <h1>Login</h1>
+        <h2>Login</h2>
         <form>
             <fieldset>
                 <input placeholder="username" v-model="usernameLogin">
@@ -18,6 +18,9 @@
 import axios from 'axios';
 export default {
   name: 'Login',
+  props: {
+    logging: Boolean
+  },
   data() {
     return {
       usernameLogin: '',
@@ -38,6 +41,7 @@ export default {
           password: this.passwordLogin,
         });
         this.$root.$data.user = response.data.user;
+        this.$emit('close');
       } catch (error) {
         this.errorLogin = "Error: " + error.response.data.message;
         this.$root.$data.user = null;
