@@ -1,3 +1,12 @@
+<template>
+    <div class="my-parties">
+        <h2>My Gaze Parties</h2>
+        <PartiesList :parties="parties" />
+        <button @click="showCreate">Create New Gaze Party</button>
+        <Create :show="show" @close="close" @createFinished="createFinished" />
+    </div>
+</template>
+
 <script>
 import axios from 'axios';
 import Uploader from '@/components/Create.vue';
@@ -24,15 +33,8 @@ export default {
     },
   },
   methods: {
-    async logout() {
-      try {
-        await axios.delete("/api/users");
-        this.$root.$data.user = null;
-      } catch (error) {
-        this.$root.$data.user = null;
-      }
-    },
-    async getPhotos() {
+    
+    async getParties() {
       try {
         this.response = await axios.get("/api/parties");
         this.photos = this.response.data;
