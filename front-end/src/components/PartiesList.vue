@@ -1,7 +1,7 @@
 <template>
 <div class="parties-list">
     <div class="party" v-for="party in parties" v-bind:key="party._id">
-      <div class="photoInfo">
+      <div class="partyInfo">
         <p class="partyTitle">{{party.title}}</p>
         <p class="partyName">{{party.user.firstName}} {{party.user.lastName}}</p>
         <p class="partyDate">{{formatDate(party.date)}}</p>
@@ -13,6 +13,8 @@
 </template>
 
 <script>
+  import moment from 'moment';
+
 export default {
   name: 'PartiesList',
   props: {

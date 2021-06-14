@@ -37,7 +37,7 @@ export default {
     async getParties() {
       try {
         this.response = await axios.get("/api/parties");
-        this.photos = this.response.data;
+        this.parties = this.response.data;
       } catch (error) {
         this.error = error.response.data.message;
       }
