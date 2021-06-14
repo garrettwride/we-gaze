@@ -22,7 +22,7 @@ const partySchema = new mongoose.Schema({
 const Party = mongoose.model('Party', partySchema);
 
 router.post("/", validUser, async (req, res) => {
-    const photo = new Party({
+    const party = new Party({
       user: req.user,
       title: req.body.title,
       description: req.body.description,
