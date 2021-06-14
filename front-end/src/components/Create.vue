@@ -47,13 +47,13 @@ export default {
   },
   async create() {
       try {
-        const formData = new FormData();
-        formData.append('location', this.location);
-        formData.append('city', this.city);
-        formData.append('date', this.date);
-        formData.append('title', this.title);
-        formData.append('description', this.description);
-        await axios.post("/api/parties", formData);
+        await axios.post("/api/parties", {
+            title: this.title,
+            description: this.description,
+            date: this.date,
+            location: this.location,
+            city: this.city
+        });
         this.location = "";
         this.city = "";
         this.date = "";

@@ -22,18 +22,24 @@ const partySchema = new mongoose.Schema({
 const Party = mongoose.model('Party', partySchema);
 
 router.post("/", validUser, async (req, res) => {
-    const party = new Party({
-      user: req.user,
-      title: req.body.title,
-      description: req.body.description,
-      date: req.body.date,
-      location: req.body.location,
-      city: req.body.city,
-      participants: 1
+    if (!req.body.title || !req.body.description || !req.body.date || !req.body.location || !req.body.city)
+    return res.status(400).send({
+      message: "title, description, location, city and date are required"
     });
+    
     try {
-      await party.save();
-      return res.sendStatus(200);
+        const party = new Party({
+        user: req.user,
+        title: req.body.title,
+        description: req.body.description,
+        date: req.body.date,
+        location: req.body.location,
+        city: req.body.city,
+        participants: 1
+        });
+
+        await party.save();
+        return res.sendStatus(200);
     } catch (error) {
       console.log(error);
       return res.sendStatus(500);

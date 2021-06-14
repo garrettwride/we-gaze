@@ -106,7 +106,6 @@ router.post('/', async (req, res) => {
   }
 });
 
-// login a user
 router.post('/login', async (req, res) => {
   if (!req.body.username || !req.body.password)
     return res.sendStatus(400);
