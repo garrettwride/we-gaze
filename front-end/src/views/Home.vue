@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import GazeParties from '@/components/GazeParties.vue';
+import GazeParties from '@/components/PartiesNearby.vue';
 import Intro from '@/components/Intro.vue';
 import SignUp from '@/components/SignUp.vue';
 import Login from '@/components/Login.vue';
