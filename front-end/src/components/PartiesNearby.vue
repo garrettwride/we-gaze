@@ -1,6 +1,12 @@
 <template>
     <div class="dashboard">
         <div class="nearby">
+            <h2>Gaze Parties Near You</h2>
+            <form>
+                <legend>Enter U.S. city:</legend>
+                <input v-model="city">
+                <button type="submit">Submit</button>
+            </form>
             <PartiesList :parties="partiesNearby"/>
         </div>
         <div class="attending">
