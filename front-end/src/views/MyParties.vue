@@ -9,8 +9,8 @@
 
 <script>
 import axios from 'axios';
-import Uploader from '@/components/Create.vue';
-import ImageGallery from '@/components/PartiesList.vue';
+import Create from '@/components/Create.vue';
+import PartiesList from '@/components/PartiesList.vue';
 export default {
   name: 'MyParties',
   components: {

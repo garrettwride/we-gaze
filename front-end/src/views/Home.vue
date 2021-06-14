@@ -1,6 +1,6 @@
 <template>
 <div class="home">
-  <GazeParties v-if="user" />
+  <PartiesNearby v-if="user" />
   <Login logging @close="close" v-else-if="logging" />
   <SignUp signing @close="close" v-else-if="signing" />
   <Intro v-bind:logging="false" v-bind:signing="false" @login="login" @signUp="signUp" v-else />
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import GazeParties from '@/components/PartiesNearby.vue';
+import PartiesNearby from '@/components/PartiesNearby.vue';
 import Intro from '@/components/Intro.vue';
 import SignUp from '@/components/SignUp.vue';
 import Login from '@/components/Login.vue';
@@ -16,7 +16,7 @@ import axios from 'axios';
 export default {
   name: 'Home',
   components: {
-    GazeParties,
+    PartiesNearby,
     Intro,
     SignUp,
     Login

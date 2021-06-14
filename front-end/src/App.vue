@@ -11,22 +11,7 @@
   </div>
 </template>
 
-/*<script>
-import { defineComponent } from '@vue/composition-api'
 
-export default defineComponent({
-  methods: {
-    async logout() {
-      try {
-        await axios.delete("/api/users");
-        this.$root.$data.user = null;
-      } catch (error) {
-        this.$root.$data.user = null;
-      }
-    },
-  }
-})
-</script>*/
 
 <style>
 #app {
