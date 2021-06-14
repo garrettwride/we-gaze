@@ -5,7 +5,7 @@
             <form>
                 <legend>Enter U.S. city:</legend>
                 <input v-model="city">
-                <button type="submit">Submit</button>
+                <button type="submit" @click.prevent="getPartiesNearby">Submit</button>
             </form>
             <PartiesList :parties="partiesNearby"/>
         </div>
@@ -25,12 +25,12 @@ export default {
   },
   data() {
     return {
-      show: false,
+      city: "",
       partiesNearby: [],
       error: '',}
   },
   created() {
-    this.getPartiesNearby();
+    
   },
 
   computed: {
@@ -42,7 +42,7 @@ export default {
     
     async getPartiesNearby() {
       try {
-        this.response = await axios.get("/api/parties/nearby");
+        this.response = await axios.get("/api/parties/" + this.city);
         this.partiesNearby = this.response.data;
       } catch (error) {
         this.error = error.response.data.message;

@@ -58,10 +58,10 @@ router.post("/", validUser, async (req, res) => {
     }
   });
 
-  router.get("/nearby", validUser, async (req, res) => {
+  router.get("/:city", validUser, async (req, res) => {
     try {
       let parties = await Party.find({
-        user: req.body.city
+        city: req.params.city
       }).populate('user');
       return res.send(parties);
     } catch (error) {
