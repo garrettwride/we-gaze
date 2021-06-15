@@ -7,7 +7,7 @@
         <p class="partyDate">{{formatDate(party.date)}}</p>
         <p class="partyLocation">{{party.location}}</p>
         <p class="partyParticipants">{{party.participants.length}}</p>
-        <button v-if="party.participants != user._id" @click.prevent="addParticipant(party)">RSVP</button>
+        <button v-if="!isParticipating(party)" @click.prevent="addParticipant(party)">RSVP</button>
       </div>
     </div>
 </div>
@@ -37,11 +37,20 @@ export default {
         async addParticipant(party){
             try {
                 await axios.put("/api/parties/" + party._id);
-
+                this.$emit('getPartiesNearby');
                 return true;
             } catch (error) {
                 console.log(error);
             }
+        },
+        isParticipating(party) {
+            let i = 0;
+            for (i = 0; i <= party.participants.length; ++i) {
+                if (party.participants[i] === this.$root.$data.user._id) {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

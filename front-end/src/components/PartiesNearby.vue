@@ -7,7 +7,7 @@
                 <input v-model="city">
                 <button type="submit" @click.prevent="getPartiesNearby">Submit</button>
             </form>
-            <PartiesList :parties="partiesNearby"/>
+            <PartiesList :parties="partiesNearby" @getPartiesNearby="getPartiesNearby"/>
         </div>
         <div class="attending">
             <PartiesList />
