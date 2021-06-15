@@ -73,7 +73,7 @@ router.post("/", validUser, async (req, res) => {
     }
   });
 
-  router.delete('api/parties/:id', async (req, res) => {
+  router.delete('/:id', async (req, res) => {
     try {
       await Party.deleteOne({
         _id: req.params.id
@@ -85,7 +85,7 @@ router.post("/", validUser, async (req, res) => {
     }
   });
 
-  app.put('/api/parties/:id', async (req, res) => {
+  router.put('/:id', validUser, async (req, res) => {
     try {
       let party = await Party.findOne({
         _id: req.params.id

@@ -7,7 +7,7 @@
         <p class="partyDate">{{formatDate(party.date)}}</p>
         <p class="partyLocation">{{party.location}}</p>
         <p class="partyParticipants">{{party.participants.length}}</p>
-        <button v-if="party.participants != user._id">RSVP</button>
+        <button v-if="party.participants != user._id" @click.prevent="addParticipant(party)">RSVP</button>
       </div>
     </div>
 </div>
@@ -15,6 +15,7 @@
 
 <script>
   import moment from 'moment';
+  import axios from 'axios';
 
 export default {
   name: 'PartiesList',
@@ -32,6 +33,15 @@ export default {
                 return moment(date).fromNow();
             else
                 return moment(date).format('d MMMM YYYY');
+        },
+        async addParticipant(party){
+            try {
+                await axios.put("/api/parties/" + party._id);
+
+                return true;
+            } catch (error) {
+                console.log(error);
+            }
         }
     }
 }
