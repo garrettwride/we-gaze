@@ -7,10 +7,11 @@
                 <input v-model="city">
                 <button type="submit" @click.prevent="getPartiesNearby">Submit</button>
             </form>
-            <PartiesList :parties="partiesNearby" @getPartiesNearby="getPartiesNearby"/>
+            <PartiesList v-bind:showParticipants="false" :parties="partiesNearby" @getPartiesNearby="getPartiesNearby"/>
         </div>
         <div class="attending">
-            <PartiesList />
+            <h2>Gaze Parties You're Planning on Attending</h2>
+            <PartiesList :parties="parties" @getParties="getParties" v-bind:showParticipants="true"/>
         </div>
     </div>
 </template>
@@ -26,11 +27,17 @@ export default {
   data() {
     return {
       city: "",
+      parties: [],
       partiesNearby: [],
       error: '',}
   },
-  created() {
-    
+  async created() {
+    try {
+        this.response = await axios.get("/api/parties/");
+        this.parties = this.response.data;
+      } catch (error) {
+        this.error = error.response.data.message;
+      }
   },
 
   computed: {
@@ -44,6 +51,14 @@ export default {
       try {
         this.response = await axios.get("/api/parties/" + this.city);
         this.partiesNearby = this.response.data;
+      } catch (error) {
+        this.error = error.response.data.message;
+      }
+    },
+    async getParties() {
+      try {
+        this.response = await axios.get("/api/parties/");
+        this.parties = this.response.data;
       } catch (error) {
         this.error = error.response.data.message;
       }

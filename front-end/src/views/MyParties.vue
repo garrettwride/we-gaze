@@ -1,7 +1,7 @@
 <template>
     <div class="my-parties">
         <h2>My Gaze Parties</h2>
-        <PartiesList :parties="parties" />
+        <PartiesList :parties="parties" v-bind:showParticipants="false"/>
         <button @click="showCreate">Create New Gaze Party</button>
         <Create :show="show" @close="close" @createFinished="createFinished" />
     </div>
@@ -33,10 +33,9 @@ export default {
     },
   },
   methods: {
-    
     async getParties() {
       try {
-        this.response = await axios.get("/api/parties");
+        this.response = await axios.get("/api/parties/user");
         this.parties = this.response.data;
       } catch (error) {
         this.error = error.response.data.message;

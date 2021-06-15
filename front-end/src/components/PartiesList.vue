@@ -1,7 +1,7 @@
 <template>
 <div class="parties-list">
     <div class="party" v-for="party in parties" v-bind:key="party._id">
-      <div class="partyInfo">
+      <div v-if="!showParticipants || isParticipating(party)" class="partyInfo">
         <p class="partyTitle">{{party.title}}</p>
         <p class="partyName">{{party.user.firstName}} {{party.user.lastName}}</p>
         <p class="partyDate">{{formatDate(party.date)}}</p>
@@ -20,7 +20,8 @@
 export default {
   name: 'PartiesList',
   props: {
-    parties: Array
+    parties: Array,
+    showParticipants: Boolean
   },
   computed: {
     user() {

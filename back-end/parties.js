@@ -52,6 +52,17 @@ router.post("/", validUser, async (req, res) => {
   router.get("/", validUser, async (req, res) => {
     try {
       let parties = await Party.find({
+      }).populate('user');
+      return res.send(parties);
+    } catch (error) {
+      console.log(error);
+      return res.sendStatus(500);
+    }
+  });
+
+  router.get("/user", validUser, async (req, res) => {
+    try {
+      let parties = await Party.find({
         user: req.user
       }).populate('user');
       return res.send(parties);
@@ -72,6 +83,7 @@ router.post("/", validUser, async (req, res) => {
       return res.sendStatus(500);
     }
   });
+
 
   router.delete('/:id', async (req, res) => {
     try {
