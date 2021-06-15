@@ -4,7 +4,7 @@
       <h1>We Gaze</h1>
       <nav>
         <router-link to="/">Home</router-link>
-        <router-link to="/MyParties">My Parties</router-link>
+        <router-link v-if="user" to="/MyParties">My Parties</router-link>
       </nav>
       <button v-if="user" @click="logout">Logout</button>
     </header>
