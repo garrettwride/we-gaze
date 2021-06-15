@@ -47,6 +47,7 @@ export default {
   },
   async create() {
       try {
+        this.city = this.city.toLowerCase();
         await axios.post("/api/parties", {
             title: this.title,
             description: this.description,

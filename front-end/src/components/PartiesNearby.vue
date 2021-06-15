@@ -39,8 +39,8 @@ export default {
     },
   },
   methods: {
-    
     async getPartiesNearby() {
+      this.city = this.city.toLowerCase();
       try {
         this.response = await axios.get("/api/parties/" + this.city);
         this.partiesNearby = this.response.data;
