@@ -53,7 +53,7 @@ router.post("/", validUser, async (req, res) => {
     try {
       let parties = await Party.find({
         user: req.user
-      }).populate('user').populate('participants');
+      }).populate('user');
       return res.send(parties);
     } catch (error) {
       console.log(error);
@@ -65,7 +65,7 @@ router.post("/", validUser, async (req, res) => {
     try {
       let parties = await Party.find({
         city: req.params.city
-      }).populate('user').populate('participants');
+      }).populate('user');
       return res.send(parties);
     } catch (error) {
       console.log(error);
