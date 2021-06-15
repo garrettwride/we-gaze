@@ -6,12 +6,33 @@
         <router-link to="/">Home</router-link>
         <router-link to="/MyParties">My Parties</router-link>
       </nav>
+      <button v-if="user" @click="logout">Logout</button>
     </header>
     <router-view />
   </div>
 </template>
 
-
+<script>
+import axios from 'axios';
+export default {
+  name: 'App',
+  computed: {
+    user() {
+      return this.$root.$data.user;
+    },
+  },
+  methods: {
+    async logout() {
+      try {
+        await axios.delete("/api/users");
+        this.$root.$data.user = null;
+      } catch (error) {
+        this.$root.$data.user = null;
+      }
+    },
+  }
+}
+</script>
 
 <style>
 #app {
