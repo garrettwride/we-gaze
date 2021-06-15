@@ -6,7 +6,7 @@
         <p class="partyName">{{party.user.firstName}} {{party.user.lastName}}</p>
         <p class="partyDate">{{formatDate(party.date)}}</p>
         <p class="partyLocation">{{party.location}}</p>
-        <p class="partyParticipants">{{party.participants}}</p>
+        <p class="partyParticipants">{{party.participants.length}}</p>
         <button v-if="party.user._id != user._id">RSVP</button>
       </div>
     </div>

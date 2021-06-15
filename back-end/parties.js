@@ -16,7 +16,10 @@ const partySchema = new mongoose.Schema({
     date: Date,
     location: String,
     city: String,
-    participants: Number,
+    participants: [{
+        type: mongoose.Schema.ObjectId,
+        ref: 'User'
+    }],
 });
 
 const Party = mongoose.model('Party', partySchema);
@@ -35,7 +38,7 @@ router.post("/", validUser, async (req, res) => {
         date: req.body.date,
         location: req.body.location,
         city: req.body.city,
-        participants: 1
+        participants: [req.user]
         });
 
         await party.save();
@@ -50,7 +53,7 @@ router.post("/", validUser, async (req, res) => {
     try {
       let parties = await Party.find({
         user: req.user
-      }).populate('user');
+      }).populate('user').populate('participants');
       return res.send(parties);
     } catch (error) {
       console.log(error);
@@ -62,7 +65,7 @@ router.post("/", validUser, async (req, res) => {
     try {
       let parties = await Party.find({
         city: req.params.city
-      }).populate('user');
+      }).populate('user').populate('participants');
       return res.send(parties);
     } catch (error) {
       console.log(error);
