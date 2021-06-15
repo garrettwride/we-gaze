@@ -8,6 +8,10 @@
       </nav>
       <button v-if="user" @click="logout">Logout</button>
     </header>
+    <footer>
+      <p>20 Hours</p>
+      <a href="https://github.com/garrettwride/we-gaze.git">GitHub</a>
+    </footer>
     <router-view />
   </div>
 </template>
@@ -37,22 +41,37 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+
 }
 
-#nav {
+nav {
   padding: 30px;
 }
 
-#nav a {
+nav a {
   font-weight: bold;
   color: #2c3e50;
+  text-decoration: none;
 }
 
-#nav a.router-link-exact-active {
+nav a.router-link-exact-active {
   color: #42b983;
 }
+
+nav a.router-link-exact-active {
+  color: #42b983;
+}
+
+footer {
+    text-align: center;
+    padding: 30px;
+    background-color: #343636;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    border-radius: 25px;
+}
+
 </style>
