@@ -4,6 +4,7 @@
       <div v-if="!showParticipants || isParticipating(party)" class="partyInfo">
         <p class="partyTitle">{{party.title}}</p>
         <p class="partyName">{{party.user.firstName}} {{party.user.lastName}}</p>
+        <p class="partyDescription">{{party.description}}></p>
         <p class="partyDate">{{formatDate(party.date)}}</p>
         <p class="partyLocation">{{party.location}}</p>
         <p class="partyParticipants">{{party.participants.length}}</p>
