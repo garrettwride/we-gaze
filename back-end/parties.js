@@ -73,6 +73,32 @@ router.post("/", validUser, async (req, res) => {
     }
   });
 
+  router.delete('api/parties/:id', async (req, res) => {
+    try {
+      await Party.deleteOne({
+        _id: req.params.id
+      });
+      res.sendStatus(200);
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
+  });
+
+  app.put('/api/parties/:id', async (req, res) => {
+    try {
+      let party = await Party.findOne({
+        _id: req.params.id
+      });
+      party.participants.push(req.user);
+      await party.save();
+      res.sendStatus(200);
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
+  });
+
   module.exports = {
     model: Party,
     routes: router,
