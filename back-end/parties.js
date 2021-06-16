@@ -111,6 +111,26 @@ router.post("/", validUser, async (req, res) => {
     }
   });
 
+  router.put('/remove/:id', validUser, async (req, res) => {
+    try {
+      let party = await Party.findOne({
+        _id: req.params.id
+      });
+      let i = 1;
+      for (i = 1; i < party.participants.length; ++i) {
+        if (String(party.participants[i]) === String(req.user._id)) {
+            party.participants.splice(i, 1);
+            break;
+        }
+      }
+      await party.save();
+      res.sendStatus(200);
+    } catch (error) {
+      console.log(error);
+      res.sendStatus(500);
+    }
+  });
+
   module.exports = {
     model: Party,
     routes: router,

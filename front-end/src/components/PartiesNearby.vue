@@ -7,11 +7,11 @@
                 <input v-model="city">
                 <button type="submit" @click.prevent="getPartiesNearby">Submit</button>
             </form>
-            <PartiesList v-bind:showParticipants="false" :parties="partiesNearby" @getPartiesNearby="getPartiesNearby"/>
+            <PartiesList v-bind:showParticipants="false" :parties="partiesNearby" @getPartiesNearby="getPartiesNearby" @getParties="getParties"/>
         </div>
         <div class="attending">
             <h2>Gaze Parties You're Planning on Attending</h2>
-            <PartiesList :parties="parties" @getParties="getParties" v-bind:showParticipants="true"/>
+            <PartiesList :parties="parties" @getPartiesNearby="getPartiesNearby" @getParties="getParties" v-bind:showParticipants="true"/>
         </div>
     </div>
 </template>
