@@ -8,7 +8,9 @@
         <p class="partyLocation">{{party.location}}</p>
         <p class="partyParticipants">Participants: {{party.participants.length}}</p>
         <p class="partyDescription">{{party.description}}</p>
-        <button v-if="!isParticipating(party)" @click.prevent="addParticipant(party)">RSVP</button>
+        <button v-if="!isParticipating(party)" @click.prevent="addParticipant(party)">I'm Coming!</button>
+        <button v-if="myParties" @click.prevent="deleteParty(party)">Delete</button>
+        <button v-if="isParticipating(party)" @click.prevent="removeParticipant(party)">Nevermind</button>
       </div>
     </div>
 </div>
@@ -22,7 +24,8 @@ export default {
   name: 'PartiesList',
   props: {
     parties: Array,
-    showParticipants: Boolean
+    showParticipants: Boolean,
+    myParties: Boolean
   },
   computed: {
     user() {
@@ -50,8 +53,27 @@ export default {
                 }
             }
             return false;
-        }
+        },
+        async deleteParty(party) {
+            try {
+                await axios.delete("/api/parties/" + party._id);
+                this.$emit('getParties');
+            } catch (error) {
+                this.error = error.response.data.message;
+            }
+        },
+        async removeParticipant(party){
+            try {
+                await axios.put("/api/parties/remove/" + party._id);
+                this.$emit('getPartiesNearby');
+                this.$emit('getParties');
+                return true;
+            } catch (error) {
+                console.log(error);
+            }
+        },
     }
+    
 }
 </script>
 
@@ -65,6 +87,7 @@ p {
     padding: 10px;
     margin: 15px;
     border: 5px double #9c5b63ff;
+    border-radius: 25px;;
 }
 
 button {

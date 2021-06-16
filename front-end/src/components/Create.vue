@@ -5,9 +5,6 @@
                 <input v-model="title" placeholder="Title">
             </fieldset>
             <fieldset>
-                <textarea v-model="description" placeholder="Description"></textarea>
-            </fieldset>
-            <fieldset>
                 <input v-model="date" placeholder="Date of Gaze Party">
             </fieldset>
             <fieldset>
@@ -15,6 +12,9 @@
             </fieldset>
             <fieldset>
                 <input v-model="city" placeholder="City">
+            </fieldset>
+            <fieldset>
+                <textarea v-model="description" placeholder="Description"></textarea>
             </fieldset>
             <fieldset class="buttons">
                 <button type="button" @click="close">Close</button>
@@ -68,3 +68,20 @@ export default {
 }
 }
 </script>
+
+<style scoped>
+
+input, textarea {
+    padding: 7px;
+    margin: 10px;
+}
+
+textarea {
+    width: 164px;
+}
+
+button {
+    margin: 15px;
+}
+
+</style>

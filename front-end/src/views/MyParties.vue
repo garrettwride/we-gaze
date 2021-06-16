@@ -1,7 +1,7 @@
 <template>
     <div class="my-parties">
         <h2>My Gaze Parties</h2>
-        <PartiesList :parties="parties" v-bind:showParticipants="false"/>
+        <PartiesList :parties="parties" v-bind:showParticipants="false" @getParties="getParties" v-bind:myParties="true"/>
         <button @click="showCreate">Create New Gaze Party</button>
         <Create :show="show" @close="close" @createFinished="createFinished" />
     </div>
@@ -51,7 +51,18 @@ export default {
       this.show = false;
       this.getParties();
     },
-
   }
 }
 </script>
+
+<style scoped>
+
+button {
+    margin: 20px;
+}
+
+h2 {
+    margin: 30px;
+}
+
+</style>

@@ -11,7 +11,7 @@
     <router-view/>
     <footer>
       <p>20 Hours</p>
-      <a href="https://github.com/garrettwride/we-gaze.git">GitHub</a>
+      <a href="https://github.com/garrettwride/we-gaze.git" target="_blank">GitHub</a>
     </footer>
   </div>
 </template>
@@ -90,6 +90,10 @@ button {
 
 fieldset {
   border: none;
+}
+
+input, textarea {
+  background-color: #ecefffff;
 }
 
 footer {
