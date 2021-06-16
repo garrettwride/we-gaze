@@ -10,7 +10,7 @@
     </header>
     <router-view/>
     <footer>
-      <p>20 Hours</p>
+      <p>25 Hours</p>
       <a href="https://github.com/garrettwride/we-gaze.git" target="_blank">GitHub</a>
     </footer>
   </div>
