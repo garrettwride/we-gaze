@@ -98,4 +98,17 @@ h3 {
     margin: 10px;
 }
 
+@media (min-width: 960px) {
+   /* .party {
+        width: 900px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+    .partyInfo {
+        width: 800px;
+
+    }*/
+}
+
 </style>

@@ -61,4 +61,10 @@ export default {
   padding-bottom: 30px;
 }
 
+@media (min-width: 960px) {
+  .home {
+    min-height: 405px;
+  }
+}
+
 </style>

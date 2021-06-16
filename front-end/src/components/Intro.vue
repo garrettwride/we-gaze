@@ -30,4 +30,11 @@ button {
     margin: 20px;
 }
 
+@media (min-width: 960px) {
+  .intro {
+    margin-top: 200px;
+    margin-bottom: 0;
+  }
+}
+
 </style>

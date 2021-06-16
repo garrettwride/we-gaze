@@ -59,4 +59,11 @@ input {
   margin:20px;
 }
 
+@media (min-width: 960px) {
+  .login {
+    margin-top: 200px;
+    margin-bottom: 0;
+  }
+}
+
 </style>

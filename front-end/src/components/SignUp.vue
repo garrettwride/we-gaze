@@ -63,4 +63,11 @@ input {
   margin: 20px
 }
 
+@media (min-width: 960px) {
+  .signup {
+    margin-top: 200px;
+    margin-bottom: 0;
+  }
+}
+
 </style>

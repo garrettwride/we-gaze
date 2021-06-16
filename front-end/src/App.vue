@@ -114,4 +114,17 @@ footer p {
   padding-bottom: 10px;
 }
 
+@media (min-width: 1140px) {
+  
+body {
+  display: flex;
+  justify-content: center;
+  background-color: #afa6e7ff;
+}
+
+  #app {
+    width: 1140px;
+  }
+}
+
 </style>
