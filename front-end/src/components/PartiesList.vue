@@ -10,7 +10,7 @@
         <p class="partyDescription">{{party.description}}</p>
         <button v-if="!isParticipating(party)" @click.prevent="addParticipant(party)">I'm Coming!</button>
         <button v-if="myParties" @click.prevent="deleteParty(party)">Delete</button>
-        <button v-if="showParticipants" @click.prevent="removeParticipant(party)">Nevermind</button>
+        <button v-if="showParticipants && !isOwner(party)" @click.prevent="removeParticipant(party)">Nevermind</button>
       </div>
     </div>
 </div>
@@ -40,6 +40,7 @@ export default {
             try {
                 await axios.put("/api/parties/" + party._id);
                 this.$emit('getPartiesNearby');
+                this.$emit('getParties');
                 return true;
             } catch (error) {
                 console.log(error);
@@ -53,6 +54,14 @@ export default {
                 }
             }
             return false;
+        },
+        isOwner(party) {
+            if (this.user._id == party.user._id) {
+                return true;
+            }
+            else {
+                return false;
+            }
         },
         async deleteParty(party) {
             try {
