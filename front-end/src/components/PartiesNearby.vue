@@ -70,11 +70,13 @@ export default {
 <style scoped>
 
 h2 {
-    margin: 20px;
+    margin: 30px;
+    margin-top: 40px;
 }
 
 legend {
     margin: 5px;
+    padding-right: 20px;
 }
 
 input {

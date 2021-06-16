@@ -84,8 +84,8 @@ p {
 }
 
 .partyInfo {
-    padding: 10px;
-    margin: 15px;
+    padding: 12px;
+    margin: 25px;
     border: 5px double #9c5b63ff;
     border-radius: 25px;;
 }
@@ -99,16 +99,11 @@ h3 {
 }
 
 @media (min-width: 960px) {
-   /* .party {
-        width: 900px;
-        display: flex;
-        justify-content: center;
-        text-align: center;
+    .party {
+        padding-left: 100px;
+        padding-right: 100px;
     }
-    .partyInfo {
-        width: 800px;
 
-    }*/
 }
 
 </style>
