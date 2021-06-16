@@ -71,13 +71,13 @@ nav {
 nav a {
   font-weight: bold;
   text-decoration: none;
-  color: #8576b7ff;
+  color: #9c5b63ff;
   padding: 15px;
   font-size: 1.2em;
 }
 
 nav a.router-link-exact-active {
-  color: #afa6e7ff;
+  color: #C3989E;
 }
 
 button {
