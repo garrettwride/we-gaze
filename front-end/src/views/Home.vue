@@ -54,3 +54,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+.home {
+  padding-bottom: 30px;
+}
+
+</style>

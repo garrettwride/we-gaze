@@ -3,16 +3,16 @@
     <header id="header">
       <h1>We Gaze</h1>
       <nav>
-        <router-link to="/">Home</router-link>
+        <router-link to="/" >Home</router-link>
         <router-link v-if="user" to="/MyParties">My Parties</router-link>
       </nav>
       <button v-if="user" @click="logout">Logout</button>
     </header>
+    <router-view/>
     <footer>
       <p>20 Hours</p>
       <a href="https://github.com/garrettwride/we-gaze.git">GitHub</a>
     </footer>
-    <router-view />
   </div>
 </template>
 
@@ -39,11 +39,29 @@ export default {
 </script>
 
 <style>
+/*--magnolia>: #ecefffff;
+--middle-blue-purple: #8576b7ff;
+--rose-dust: #9c5b63ff;
+--maximum-blue-purple: #afa6e7ff;
+--oxford-blue: #05152fff;/\*/
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   text-align: center;
-  color: #2c3e50;
+  color: #ecefffff;
+  background-image: url("/public/images/sky.jpeg");
+  font-family: 'Josefin Sans', sans-serif;
+}
 
+header {
+  padding-top: 30px;
+  font-size: 1.2em;
 }
 
 nav {
@@ -52,26 +70,44 @@ nav {
 
 nav a {
   font-weight: bold;
-  color: #2c3e50;
   text-decoration: none;
+  color: #8576b7ff;
+  padding: 15px;
+  font-size: 1.2em;
 }
 
 nav a.router-link-exact-active {
-  color: #42b983;
+  color: #afa6e7ff;
 }
 
-nav a.router-link-exact-active {
-  color: #42b983;
+button {
+  font-family: 'Josefin Sans', sans-serif;
+  padding: 10px;
+  border-radius: 25px;
+  background-color: #afa6e7ff;
+  color: #05152fff;
+}
+
+fieldset {
+  border: none;
 }
 
 footer {
     text-align: center;
-    padding: 30px;
-    background-color: #343636;
-    position: fixed;
+    padding: 15px;
+    background-color: #8576b7ff;
     bottom: 0;
     width: 100%;
-    border-radius: 25px;
+    color: #ecefffff;
+}
+
+footer a {
+  text-decoration: none;
+  color: #ecefffff;
+}
+
+footer p {
+  padding-bottom: 10px;
 }
 
 </style>

@@ -23,3 +23,11 @@
         }
     }
 </script>
+
+<style scoped>
+
+button {
+    margin: 20px;
+}
+
+</style>

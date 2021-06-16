@@ -2,12 +2,12 @@
 <div class="parties-list">
     <div class="party" v-for="party in parties" v-bind:key="party._id">
       <div v-if="!showParticipants || isParticipating(party)" class="partyInfo">
-        <p class="partyTitle">{{party.title}}</p>
-        <p class="partyName">{{party.user.firstName}} {{party.user.lastName}}</p>
-        <p class="partyDescription">{{party.description}}></p>
+        <h3 class="partyTitle">{{party.title}}</h3>
+        <p class="partyName">Host: {{party.user.firstName}} {{party.user.lastName}}</p>
         <p class="partyDate">{{formatDate(party.date)}}</p>
         <p class="partyLocation">{{party.location}}</p>
-        <p class="partyParticipants">{{party.participants.length}}</p>
+        <p class="partyParticipants">Participants: {{party.participants.length}}</p>
+        <p class="partyDescription">{{party.description}}</p>
         <button v-if="!isParticipating(party)" @click.prevent="addParticipant(party)">RSVP</button>
       </div>
     </div>
@@ -31,10 +31,7 @@ export default {
   },
     methods: {
         formatDate(date) {
-            if (moment(date).diff(Date.now(), 'days') < 15)
-                return moment(date).fromNow();
-            else
-                return moment(date).format('d MMMM YYYY');
+            return moment(date).format('MMMM d YYYY');
         },
         async addParticipant(party){
             try {
@@ -57,3 +54,25 @@ export default {
     }
 }
 </script>
+
+<style scoped>
+
+p {
+    padding: 5px;
+}
+
+.partyInfo {
+    padding: 10px;
+    margin: 15px;
+    border: 5px double #9c5b63ff;
+}
+
+button {
+    margin: 10px;
+}
+
+h3 {
+    margin: 10px;
+}
+
+</style>

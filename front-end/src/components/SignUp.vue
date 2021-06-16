@@ -55,3 +55,12 @@ export default {
 
 }
 </script>
+
+<style scoped>
+
+input {
+  padding: 8px;
+  margin: 20px
+}
+
+</style>

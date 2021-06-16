@@ -66,3 +66,25 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+
+h2 {
+    margin: 20px;
+}
+
+legend {
+    margin: 5px;
+}
+
+input {
+    padding: 7px;
+    margin-right: 12px;
+    margin-bottom: 20px;;
+}
+
+.attending h2 {
+    margin-top: 50px;
+}
+
+</style>
