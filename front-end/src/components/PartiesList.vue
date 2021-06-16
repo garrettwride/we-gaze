@@ -10,7 +10,6 @@
         <p class="partyDescription">{{party.description}}</p>
         <button v-if="!isParticipating(party)" @click.prevent="addParticipant(party)">I'm Coming!</button>
         <button v-if="myParties" @click.prevent="deleteParty(party)">Delete</button>
-        <button v-if="isParticipating(party)" @click.prevent="removeParticipant(party)">Nevermind</button>
       </div>
     </div>
 </div>
@@ -60,16 +59,6 @@ export default {
                 this.$emit('getParties');
             } catch (error) {
                 this.error = error.response.data.message;
-            }
-        },
-        async removeParticipant(party){
-            try {
-                await axios.put("/api/parties/remove/" + party._id);
-                this.$emit('getPartiesNearby');
-                this.$emit('getParties');
-                return true;
-            } catch (error) {
-                console.log(error);
             }
         },
     }
